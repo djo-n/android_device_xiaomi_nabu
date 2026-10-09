@@ -1,6 +1,5 @@
 <display-settings>
     <config identifier="0" />
     <display
-        name="Built-in Display"
-        ignoreOrientationRequest="true"/>
+        name="Built-in Display"/>
 </display-settings>
