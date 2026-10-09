@@ -29,9 +29,6 @@
     <!-- Whether to show emergency gesture in Settings -->
     <bool name="config_show_emergency_gesture_settings">false</bool>
 
-    <!-- Whether to show a preference item for mobile plan -->
-    <bool name="config_show_mobile_plan">false</bool>
-
     <!-- Whether sim related information is visible to the end user. -->
     <bool name="config_show_sim_info">false</bool>
 
