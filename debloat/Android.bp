@@ -1,0 +1,24 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Installing this module keeps every module in overrides out of the build.
+prebuilt_etc {
+    name: "nabu_debloat",
+    src: "nabu_debloat.txt",
+    vendor: true,
+    overrides: [
+        "Backgrounds",
+        "Camelot",
+        "EmergencyInfo",
+        "Etar",
+        "ExactCalculator",
+        "Gallery2",
+        "Jelly",
+        "Profiles",
+        "QuickAccessWallet",
+        "Recorder",
+        "SimpleSettingsConfig",
+        "Twelve",
+    ],
+}

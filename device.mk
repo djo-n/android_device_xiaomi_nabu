@@ -220,6 +220,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
+# Debloat
+PRODUCT_PACKAGES += \
+    nabu_debloat
+
 # Device-specific settings
 PRODUCT_PACKAGES += \
     XiaomiPad5HwCtrl
