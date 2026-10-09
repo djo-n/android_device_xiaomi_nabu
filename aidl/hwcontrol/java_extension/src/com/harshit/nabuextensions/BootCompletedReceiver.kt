@@ -20,7 +20,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.harshit.nabuextensions.stylus.PenChargingService
 
 class BootCompletedReceiver : BroadcastReceiver() {
 
@@ -36,9 +35,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
         Log.i(tag, "Boot completed, initializing hardware controls")
         PeripheralUtils.bootResetState(storageContext)
-
-        // Start pen charging notification service
-        PenChargingService.start(storageContext)
     }
 }
 

@@ -18,14 +18,6 @@
     <string name="double_tap_2_wake_switch_title">Enable double tap to wake</string>
     <string name="double_tap_2_wake_switch_summary">Allow waking device by double tapping the screen</string>
 
-    <!-- Pen Charging Notification -->
-    <string name="pen_charging_channel_name">Stylus Charging</string>
-    <string name="pen_charging_channel_description">Shows stylus battery status while charging</string>
-    <string name="pen_charging_notification_title">Stylus Charging</string>
-    <string name="pen_charging_notification_content">Battery: %d%%</string>
-    <string name="pen_charging_notification_content_full">Pen is completely charged</string>
-    <string name="pen_charging_notification_content_unknown">Charging…</string>
-
     <!-- Game Mode -->
     <string name="game_mode_title">Touchscreen Game Mode</string>
     <string name="game_mode_summary">Switch touchscreen firmware to MIUI 12.5 for enhanced touch response</string>
