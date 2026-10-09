@@ -69,13 +69,6 @@ object PreferenceManager {
     }
     
     /**
-     * Set keyboard enable/disable state
-     */
-    fun setKeyboardEnabled(context: Context, enabled: Int) {
-        getPreferences(context, PREF_KEYBOARD).edit().putInt(KEY_KEYBOARD, enabled).apply()
-    }
-    
-    /**
      * Get tap2wake enable/disable state
      */
     fun getTap2WakeEnabled(context: Context): Int {

@@ -20,12 +20,6 @@
     <string name="stylus_gen_switch_title">Generation 2 support</string>
     <string name="stylus_gen_switch_summary">Enable before activating stylus. Requires screen off/on cycle to apply</string>
 
-    <!-- Xiaomi Keyboard -->
-    <string name="keyboard_title">Xiaomi Keyboard</string>
-    <string name="keyboard_summary">Configure keyboard attachment support</string>
-    <string name="keyboard_switch_title">Enable keyboard</string>
-    <string name="keyboard_switch_summary">Enable support for Xiaomi keyboard attachment</string>
-
     <!-- Double tap to wake -->
     <string name="double_tap_2_wake_title">Double tap to wake</string>
     <string name="double_tap_2_wake_summary">Wake device by double tapping the screen</string>
