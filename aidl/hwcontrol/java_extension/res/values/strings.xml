@@ -12,14 +12,6 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Xiaomi Stylus -->
-    <string name="stylus_title">Xiaomi Stylus</string>
-    <string name="stylus_summary">Configure stylus support and generation</string>
-    <string name="stylus_switch_title">Enable stylus</string>
-    <string name="stylus_switch_summary">Enable support for Xiaomi stylus</string>
-    <string name="stylus_gen_switch_title">Generation 2 support</string>
-    <string name="stylus_gen_switch_summary">Enable before activating stylus. Requires screen off/on cycle to apply</string>
-
     <!-- Double tap to wake -->
     <string name="double_tap_2_wake_title">Double tap to wake</string>
     <string name="double_tap_2_wake_summary">Wake device by double tapping the screen</string>

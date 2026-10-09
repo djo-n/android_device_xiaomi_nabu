@@ -41,24 +41,10 @@ object PreferenceManager {
     }
     
     /**
-     * Set stylus enable/disable state
-     */
-    fun setStylusEnabled(context: Context, enabled: Int) {
-        getPreferences(context, PREF_STYLUS).edit().putInt(KEY_STYLUS, enabled).apply()
-    }
-    
-    /**
      * Get stylus generation
      */
     fun getStylusGeneration(context: Context): String {
         return getPreferences(context, PREF_STYLUS_GEN).getString(KEY_STYLUS_GEN, DEFAULT_STYLUS_GEN) ?: DEFAULT_STYLUS_GEN
-    }
-    
-    /**
-     * Set stylus generation
-     */
-    fun setStylusGeneration(context: Context, generation: String) {
-        getPreferences(context, PREF_STYLUS_GEN).edit().putString(KEY_STYLUS_GEN, generation).apply()
     }
     
     /**
