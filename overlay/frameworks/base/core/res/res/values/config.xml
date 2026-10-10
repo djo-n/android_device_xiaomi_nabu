@@ -531,12 +531,6 @@
          (lower-end devices may want to disable) -->
     <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
 
-    <!-- Whether to show a warning notification when device's skin temperature is high. -->
-    <integer name="config_showTemperatureWarning">1</integer>
-
-    <!-- Whether to show a alarm dialog when device's usb port is overheating. -->
-    <integer name="config_showUsbPortAlarm">1</integer>
-
     <!-- Whether the current device's internal display can host desktop sessions.  -->
     <bool name="config_canInternalDisplayHostDesktops">true</bool>
 
