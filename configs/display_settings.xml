@@ -1,5 +1,6 @@
 <display-settings>
-    <config identifier="0" />
+    <config identifier="1" />
     <display
-        name="Built-in Display"/>
+        name="port:129"
+        ignoreOrientationRequest="false"/>
 </display-settings>
