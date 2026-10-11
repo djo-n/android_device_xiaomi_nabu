@@ -82,7 +82,7 @@ void witch_nabu()
   set_device_properties(((::android::base::GetProperty("ro.boot.hwc", std::string("GLOBAL")) == "GLOBAL")) ? variants[0] : variants[1]);
 
   property_override("ro.boot.hardware.revision", ::android::base::GetProperty("ro.boot.hwversion", "").c_str());
-  property_override("ro.boot.wificountrycode", "US");
+  property_override("ro.boot.wificountrycode", "DE");
 }
 
 void vendor_load_properties() { witch_nabu(); }
