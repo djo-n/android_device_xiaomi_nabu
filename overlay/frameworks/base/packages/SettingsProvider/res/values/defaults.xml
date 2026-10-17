@@ -23,8 +23,4 @@
 
     <!-- Set the automatic rotation mode on by default -->
     <bool name="def_accelerometer_rotation">true</bool>
-
-    <!-- Allow users to use both the on-screen keyboard, as well as a real
-         keyboard -->
-    <bool name="def_show_ime_with_hard_keyboard">true</bool>
 </resources>
