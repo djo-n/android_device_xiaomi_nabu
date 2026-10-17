@@ -316,6 +316,9 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1.vendor \
     vendor.lineage.health-service.default
 
+# battery_charging_enabled only caps the charger input at 50 mA on this charger
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
+
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
