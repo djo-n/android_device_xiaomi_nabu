@@ -313,7 +313,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
     android.hardware.health-service.qti_recovery \
-    android.hardware.health@2.1.vendor
+    android.hardware.health@2.1.vendor \
+    vendor.lineage.health-service.default
 
 # HIDL
 PRODUCT_PACKAGES += \
