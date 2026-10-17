@@ -134,6 +134,7 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := $(ALL_PARTITIONS)
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
 # This would get enabled based on the build flag WITH_GMS & WITHOUT_RESERVED_SIZE.
+WITHOUT_RESERVED_SIZE := true
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 
 # Platform
