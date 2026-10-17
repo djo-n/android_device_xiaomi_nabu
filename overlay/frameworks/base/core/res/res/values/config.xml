@@ -556,4 +556,21 @@
         <item>com.twitter.android:0.07</item>
         <item>com.google.android.youtube:0.07</item>
     </string-array>
+
+    <string-array name="config_forceQueryablePackages" translatable="false">
+        <item>com.android.settings</item>
+        <item>com.android.providers.settings</item>
+        <item>com.android.vending</item>
+        <item>com.google.android.gms</item>
+    </string-array>
+    <string name="config_appsAuthorizedForSharedAccounts" translatable="false">;com.android.vending;com.android.settings;</string>
+    <string-array name="config_rawContactsEligibleDefaultAccountTypes" translatable="false">
+        <item>com.google</item>
+    </string-array>
+    <string-array name="config_setContactsDefaultAccountKnownSigners">
+        <item>F0FD6C5B410F25CB25C3B53346C8972FAE30F8EE7411DF910480AD6B2D60DB83</item>
+    </string-array>
+    <string name="config_defaultDndAccessPackages" translatable="false">com.android.camera2:com.google.android.gms</string>
+    <string name="config_defaultNearbyFastPairSettingsDevicesComponent" translatable="false">com.google.android.gms/com.google.android.gms.nearby.discovery.devices.SavedDevicesSettingsActivity</string>
+    <string name="config_systemGameService" translatable="false">com.google.android.gms</string>
 </resources>
