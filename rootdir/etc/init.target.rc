@@ -274,13 +274,6 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
 on property:vendor.dcvs.prop=1
    start dcvs-sh
 
-service audioshell_service /vendor/bin/audioshell_service
-    oneshot
-    disabled
-
-on property:ro.vendor.miui.region=*
-    start audioshell_service
-
 on property:vendor.audio.cit.spkcal.copy=true
     copy /data/vendor/cit/tas2557_cal.bin /mnt/vendor/persist/audio/tas2557_cal.bin
     copy /data/vendor/cit/tas2557_cal.txt /mnt/vendor/persist/audio/tas2557_cal.txt
