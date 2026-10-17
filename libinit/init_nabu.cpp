@@ -65,17 +65,17 @@ void set_device_properties(const dv &variant)
   }
 
   property_override("ro.build.description", variant.build_description.c_str());
-  property_override("bluetooth.device.default_name", variant.model.c_str());
-  property_override("vendor.usb.product_string", variant.model.c_str());
+  property_override("bluetooth.device.default_name", "xmpdpet");
+  property_override("vendor.usb.product_string", "xmpdpet");
 }
 
 void witch_nabu()
 {
 
   dv variants[2] = {
-      {"21051182G", "nabu_global", "Xiaomi/nabu_global/nabu:13/RKQ1.200826.002/V816.0.1.0.TKXMIXM:user/release-keys",
+      {"Pad 5", "nabu_global", "Xiaomi/nabu_global/nabu:13/RKQ1.200826.002/V816.0.1.0.TKXMIXM:user/release-keys",
        "nabu_global-user 13 RKQ1.200826.002 V816.0.1.0.TKXMIXM release-keys"},
-      {"21051182C", "nabu", "Xiaomi/nabu/nabu:13/RKQ1.200826.002/V816.0.3.0.TKXCNXM:user/release-keys",
+      {"Pad 5", "nabu", "Xiaomi/nabu/nabu:13/RKQ1.200826.002/V816.0.3.0.TKXCNXM:user/release-keys",
        "nabu-user 13 TKQ1.221114.001 V816.0.3.0.TKXCNXM release-keys"},
   };
 
