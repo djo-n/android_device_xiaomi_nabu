@@ -52,9 +52,6 @@ on charger
     trigger fs
     start adbd
 
-on init
-    exec u:r:vendor-qti-testscripts:s0 -- /vendor/bin/sh /vendor/bin/init.qti.usb.debug.sh
-
 on boot
     mount configfs none /config
     mkdir /config/usb_gadget/g1 0770
@@ -136,10 +133,6 @@ on boot && property:vendor.usb.use_ffs_mtp=1
    mount functionfs mtp /dev/usb-ffs/mtp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
    mkdir /dev/usb-ffs/ptp 0770 mtp mtp
    mount functionfs ptp /dev/usb-ffs/ptp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
-
-on property:sys.usb.config=*
-    setprop vendor.usb.mimode ${persist.sys.usb.config}
-    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.mi.usb.sh
 
 on boot && property:ro.boot.usbconfigfs=true
         setprop sys.usb.configfs 1
