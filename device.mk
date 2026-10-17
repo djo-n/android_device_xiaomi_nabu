@@ -453,10 +453,9 @@ PRODUCT_PACKAGES += \
     init.xiaomi.rc \
     ueventd.qcom.rc
 
-# IRQ Tuning
+# Thermal profile and display allocator
 PRODUCT_PACKAGES += \
-    init.mi_perf.rc \
-    init.mi_perf.sh
+    init.mi_perf.rc
 
 # Sensors
 PRODUCT_PACKAGES += \

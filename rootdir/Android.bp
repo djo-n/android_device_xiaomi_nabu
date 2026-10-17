@@ -62,12 +62,6 @@ sh_binary {
     vendor: true,
 }
 
-sh_binary {
-    name: "init.mi_perf.sh",
-    src: "bin/init.mi_perf.sh",
-    vendor: true,
-}
-
 // Init configuration files
 prebuilt_etc {
     name: "init.mi_perf.rc",
