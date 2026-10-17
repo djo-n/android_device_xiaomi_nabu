@@ -268,12 +268,6 @@ service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
     class main
     oneshot
 
-service vendor.energy-awareness /vendor/bin/energy-awareness
-    class main
-    user system
-    group system
-    oneshot
-
 service panel-info-sh /system/vendor/bin/sh /vendor/etc/init.panel_info.sh
     class core
     user root
@@ -351,11 +345,6 @@ on property:vendor.audio.cit.spkcal.copy=true
     chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_tl.txt
     chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.bin
     chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.txt
-
-service remosaic_daemon /system/vendor/bin/remosaic_daemon
-   class late_start
-   user camera
-   group camera
 
 
 on post-fs-data
