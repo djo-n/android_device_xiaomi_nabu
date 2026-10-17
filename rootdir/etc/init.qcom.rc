@@ -366,23 +366,6 @@ on post-fs-data
     #Create dir for dolby
     mkdir /data/vendor/dolby 0770 media media
 
-service iop /system/vendor/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-
-service vendor.ssr_setup /system/vendor/bin/ssr_setup
-    oneshot
-    disabled
-
-service vendor.ss_ramdump /system/bin/subsystem_ramdump_system 2
-    class late_start
-#   user system
-    group system everybody
-    disabled
-
 on property:ro.vendor.iocgrp.config=1
     mkdir /dev/blkio
     mount cgroup none /dev/blkio blkio
@@ -407,17 +390,12 @@ on property:persist.sys.modem_auth_timeout=*
 on property:persist.sys.pil_proxy_timeout=*
     write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
 
-on property:persist.vendor.ssr.restart_level=*
-    start vendor.ssr_setup
-
 on property:persist.vendor.ssr.enable_ramdumps=1 && property:ro.boot.dp=0xB
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
     mkdir /data/vendor/ramdump_ssr 770 system system
-#   start vendor.ss_ramdump
 
 on property:persist.vendor.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-#   stop vendor.ss_ramdump
 
 on property:ro.boot.dp=0x0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
@@ -441,12 +419,6 @@ on property:sys.boot_completed=1
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/core-%e-%p"
-
-on property:vendor.bluetooth.startwdsdaemon=true
-    start vendor.bt_wdsdaemon
-
-on property:vendor.bluetooth.startwdsdaemon=false
-    stop vendor.bt_wdsdaemon
 
 on property:vendor.media.target.version=*
     setprop vendor.sys.media.target.version ${vendor.media.target.version}
@@ -477,50 +449,10 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     user root
     oneshot
 
-service vendor.bt_wdsdaemon /system/vendor/bin/wdsdaemon -su
-    class late_start
-    user root
-    group bluetooth diag system wakelock
-    disabled
-    oneshot
-
-service ftmd /system/vendor/bin/ftmdaemon
-    class late_start
-    user root
-    group bluetooth net_bt_admin misc diag net_bt
-    disabled
-    oneshot
-
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio diag
-    disabled
-
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
 
 # Data Migration
-service vendor.move_wifi_data /system/bin/move_wifi_data.sh
-    class main
-    user  wifi
-    group wifi
-    disabled
-    oneshot
-
-service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
-    user root
-    group root
-    disabled
-    oneshot
-
-service wifi_ftmd /system/vendor/bin/wifi_ftmd
-    user system
-    group system inet net_admin
-    socket wififtmd_server dgram 0660 system system
-    disabled
-    oneshot
-
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
     user system
@@ -530,16 +462,6 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
 on property:sys.shutdown.requested=*
     write /sys/kernel/shutdown_wlan/shutdown 1
     stop cnss-daemon
-
-service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
@@ -554,52 +476,11 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
-service wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
-    class late_start
-    group wifi inet
-    disabled
-    oneshot
-
-service wifi-crda /vendor/bin/init.crda.sh
-   class late_start
-   user root
-   disabled
-   oneshot
-
 on property:sys.boot_completed=1
     start qcom-post-boot
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service battery_monitor /system/bin/battery_monitor
-    user system
-    group system
-    disabled
-
-service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service charger_monitor /system/bin/charger_monitor
-    user root
-    group root
-    disabled
-
-service vm_bms /vendor/bin/vm_bms
-    user root
-    group root
-    disabled
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
@@ -624,13 +505,6 @@ on charger
     start qcom-post-boot
 
 #add poweroffhandler
-service poweroffhandler /system/vendor/bin/poweroffhandler
-    class core
-    user media
-    group graphics audio
-    disabled
-    oneshot
-
 service time_daemon /vendor/bin/time_daemon
     class main
     user system
@@ -649,13 +523,6 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
     group system
     disabled
     oneshot
-
-service vendor.hbtp /vendor/bin/hbtp_daemon
-     class main
-     user system
-     group system
-     capabilities SYS_NICE
-     disabled
 
 #Set GPU Opengles version
 on property:vendor.opengles.version=*
