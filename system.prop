@@ -42,3 +42,6 @@ persist.log.tag.QC2CODEC=S
 
 # Time zone
 persist.sys.timezone=Europe/London
+
+# Updater
+lineage.updater.uri=https://localhost/
