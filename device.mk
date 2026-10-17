@@ -34,6 +34,9 @@ PRODUCT_PACKAGES += \
     privapp-permissions-google-product.xml \
     privapp-permissions-google-system-ext.xml
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/google-features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-features.xml
+
 # Conditionally inherit Viper4AndroidFX & disable audioFX.
 ifneq ("$(wildcard packages/apps/ViPER4AndroidFX/config.mk)", "")
 $(warning Enabling Viper4Android audio effect.)
