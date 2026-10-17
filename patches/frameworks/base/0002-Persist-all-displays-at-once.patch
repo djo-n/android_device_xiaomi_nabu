@@ -1,0 +1,59 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matt Sziklay <mattsziklay@google.com>
+Date: Fri, 20 Feb 2026 22:09:59 +0000
+Subject: [PATCH 2/2] Persist all displays at once.
+
+---
+ .../wm/shell/desktopmode/data/DesktopRepository.kt       | 9 ++++++---
+ .../data/persistence/DesktopPersistentRepository.kt      | 4 ++--
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
+index 1fb3b3ee..6d2d7deb 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
+@@ -1227,16 +1227,19 @@ class DesktopRepository(
+             logD("updatePersistentRepository: displayId=%d", displayId)
+             if (displayId == INVALID_DISPLAY) return
+ 
+-            val desks = desktopData.desksSequence(displayId).map { it.deepCopy() }.toList()
++            val desks = desktopData.desksSequence().map { it.deepCopy() }.toList()
+             if (DesktopExperienceFlags.REPOSITORY_BASED_PERSISTENCE.isTrue) {
+                 persistentUpdateQueue.post {
+                     Trace.beginSection("DesktopRepository#UpdateRepoWork")
+-                    logD("updatePersistentRepository user=%d display=%d", userId, displayId)
++                    logD("updatePersistentRepository user=%d", userId)
+                     try {
+                         persistentRepository.addOrUpdateRepository(
+                             userId,
+                             desks,
+-                            getActiveDeskId(displayId),
++                            desktopData
++                                .getAllActiveDesks()
++                                .map { desk -> desk.uniqueDisplayId to desk.deskId }
++                                .toMap(),
+                             preservedDisplaysByUniqueId,
+                         )
+                     } catch (exception: Exception) {
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
+index 8f6f6d30..c8b6cd19 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
+@@ -116,7 +116,7 @@ class DesktopPersistentRepository(private val dataStore: DataStore<DesktopPersis
+     suspend fun addOrUpdateRepository(
+         userId: Int,
+         desks: List<Desk>,
+-        activeDeskId: Int?,
++        activeDeskIdToUniqueDisplayId: Map<String?, Int>,
+         preservedDisplays: ArrayMap<String, DesktopDisplay>,
+     ) {
+         try {
+@@ -146,7 +146,7 @@ class DesktopPersistentRepository(private val dataStore: DataStore<DesktopPersis
+                         desk.uniqueDisplayId?.let {
+                             if (
+                                 DesktopExperienceFlags.ENABLE_EXTERNAL_DISPLAY_PERSISTENCE_BUGFIX
+-                                    .isTrue && desk.deskId == activeDeskId
++                                    .isTrue && activeDeskIdToUniqueDisplayId[it] == desk.deskId
+                             ) {
+                                 currentUserRepoBuilder.putActiveDeskByUniqueDisplayId(
+                                     it,

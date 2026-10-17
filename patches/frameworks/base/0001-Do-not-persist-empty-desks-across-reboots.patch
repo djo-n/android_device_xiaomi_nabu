@@ -1,0 +1,70 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Pat Manning <patmanning@google.com>
+Date: Wed, 19 Nov 2025 10:58:34 +0000
+Subject: [PATCH 1/2] Do not persist empty desks across reboots
+
+---
+ .../desktopmode/data/DesktopRepository.kt     |  7 -------
+ .../DesktopPersistentRepository.kt            | 20 +++++--------------
+ 2 files changed, 5 insertions(+), 22 deletions(-)
+
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
+index a7e083c1..1fb3b3ee 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/DesktopRepository.kt
+@@ -1228,13 +1228,6 @@ class DesktopRepository(
+             if (displayId == INVALID_DISPLAY) return
+ 
+             val desks = desktopData.desksSequence(displayId).map { it.deepCopy() }.toList()
+-            if (desks.isEmpty()) {
+-                logD(
+-                    "updatePersistentRepository: no desks found for displayId=%d, skipping",
+-                    displayId,
+-                )
+-                return
+-            }
+             if (DesktopExperienceFlags.REPOSITORY_BASED_PERSISTENCE.isTrue) {
+                 persistentUpdateQueue.post {
+                     Trace.beginSection("DesktopRepository#UpdateRepoWork")
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
+index 8264052f..8f6f6d30 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/desktopmode/data/persistence/DesktopPersistentRepository.kt
+@@ -121,20 +121,15 @@ class DesktopPersistentRepository(private val dataStore: DataStore<DesktopPersis
+     ) {
+         try {
+             dataStore.updateData { persistentRepositories: DesktopPersistentRepositories ->
+-                val currentRepository =
+-                    persistentRepositories.getDesktopRepoByUserOrDefault(
+-                        userId,
+-                        DesktopRepositoryState.getDefaultInstance(),
+-                    )
++                val currentUserRepoBuilder = DesktopRepositoryState.getDefaultInstance().toBuilder()
+ 
+-                val currentUserRepoBuilder = currentRepository.toBuilder()
+                 desks.forEach { desk ->
+-                    if (isEmptyDesk(desk.freeformTasksInZOrder)) {
+-                        currentUserRepoBuilder.removeDesktop(desk.deskId)
+-                    } else {
++                    if (!isEmptyDesk(desk.freeformTasksInZOrder)) {
+                         val updatedDesktop =
+-                            getDesktop(currentRepository, desk.deskId, desk.displayId)
++                            Desktop.getDefaultInstance()
+                                 .toBuilder()
++                                .setDesktopId(desk.deskId)
++                                .setDisplayId(desk.displayId)
+                                 .updateTaskStates(
+                                     desk.visibleTasks,
+                                     desk.minimizedTasks,
+@@ -162,11 +157,6 @@ class DesktopPersistentRepository(private val dataStore: DataStore<DesktopPersis
+                     }
+                 }
+                 if (DesktopExperienceFlags.ENABLE_EXTERNAL_DISPLAY_PERSISTENCE_BUGFIX.isTrue) {
+-                    if (activeDeskId == null) {
+-                        desks.first().uniqueDisplayId.let {
+-                            currentUserRepoBuilder.removeActiveDeskByUniqueDisplayId(it)
+-                        }
+-                    }
+                     addOrUpdatePreservedDisplays(currentUserRepoBuilder, preservedDisplays)
+                 }
+ 
