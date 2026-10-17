@@ -16,13 +16,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Conditionally inherit GMS makefiles
-ifneq ("$(wildcard vendor/gapps/arm64/arm64-vendor.mk)", "")
-$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
-$(warning Gapps directory was found, They'll be bundled in.)
-WITHOUT_RESERVED_SIZE=true
-WITH_GMS=true
-endif
+# GApps
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/gapps/arm64 \
+    vendor/gapps/common
+
+PRODUCT_PACKAGES += \
+    GmsCore \
+    GoogleCalendarSyncAdapter \
+    GoogleContactsSyncAdapter \
+    GoogleServicesFramework \
+    Phonesky \
+    gms_fsverity_cert.der \
+    google-hiddenapi-package-allowlist.xml \
+    google.xml \
+    libjni_latinimegoogle \
+    privapp-permissions-google-product.xml \
+    privapp-permissions-google-system-ext.xml
 
 # Conditionally inherit Viper4AndroidFX & disable audioFX.
 ifneq ("$(wildcard packages/apps/ViPER4AndroidFX/config.mk)", "")
