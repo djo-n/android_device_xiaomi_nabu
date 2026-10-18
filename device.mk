@@ -37,13 +37,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/google-features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-features.xml
 
-# Conditionally inherit Viper4AndroidFX & disable audioFX.
-ifneq ("$(wildcard packages/apps/ViPER4AndroidFX/config.mk)", "")
-$(warning Enabling Viper4Android audio effect.)
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
-TARGET_EXCLUDES_AUDIOFX := true
-endif
-
 # Symlinks
 $(call inherit-product, device/xiaomi/nabu/symlink/targets.mk)
 
