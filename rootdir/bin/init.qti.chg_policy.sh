@@ -35,6 +35,8 @@ else
 	find /sys/class/qc-vdm/ -type f | xargs chown system.system
 	find /sys/class/charge_pump/ -type f | xargs chown system.system
 	find /sys/class/qcom-battery/ -type f | xargs chown system.system
+	# mi_thermald (uid root, gid system, no dac_override) writes this one
+	chmod 0664 /sys/class/power_supply/battery/dc_thermal_levels
 
 	for i in 0 1 2 3 4 5 6 7 8 9
 	do
