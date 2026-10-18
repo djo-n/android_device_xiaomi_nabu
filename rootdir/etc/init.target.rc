@@ -104,13 +104,11 @@ on post-fs-data
     chown system system /sys/class/drm/card0-DSI-1/fod_ui_ready
     chown system system /sys/class/drm/card0-DSI-1/dim_layer_enable
 
-    mkdir /data/vendor/thermal 0771 root system
-    mkdir /data/vendor/thermal/config 0771 root system
     # Keep the daemon's runtime dumps group-writable for system so mi_thermald
     # (uid 0, gid system) never needs the neverallowed dac_override capability,
     # and make sure the SELinux label is applied (vendor_thermal_data_file).
-    chown root system /data/vendor/thermal /data/vendor/thermal/config
-    chmod 0771 /data/vendor/thermal /data/vendor/thermal/config
+    mkdir /data/vendor/thermal 0771 root system
+    mkdir /data/vendor/thermal/config 0771 root system
     restorecon_recursive /data/vendor/thermal
 
     chown system system /dev/tfa_reg
