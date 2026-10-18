@@ -178,8 +178,6 @@ on boot
     chown system system /sys/class/touch/touch_dev/palm_sensor
 
     chown system system /sys/class/backlight/panel0-backlight/brightness_clone
-    chown system system /dev/lirc0
-    chmod 0660 /dev/lirc0
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "gsi"
     setprop vendor.usb.rmnet.func.name "gsi"
