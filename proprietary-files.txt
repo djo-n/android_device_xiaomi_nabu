@@ -710,7 +710,6 @@ vendor/lib64/libqmiservices.so
 
 # RIL
 vendor/bin/ks
-vendor/bin/mdm_helper
 vendor/bin/pd-mapper
 vendor/bin/qrtr-ns
 vendor/bin/rmt_storage

@@ -238,11 +238,6 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-service vendor.mdm_helper /vendor/bin/mdm_helper
-    class core
-    group system wakelock
-    disabled
-
 service dcvs-sh /vendor/bin/init.qti.dcvs.sh
     class late_start
     user root
