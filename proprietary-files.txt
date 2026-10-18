@@ -583,7 +583,6 @@ vendor/lib64/libmmosal.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libqcodec2.so
 
 # Sensors
-vendor/bin/init.qcom.sensors.sh
 vendor/bin/sensors.qti
 vendor/bin/sscrpcd
 vendor/etc/init/init.vendor.sensors.rc
