@@ -44,6 +44,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
+    <!-- No LiveDisplay hardware; Night Light covers night colours -->
+    <bool name="config_enableLiveDisplay">false</bool>
+
     <!-- Whether device has screen with higher aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
