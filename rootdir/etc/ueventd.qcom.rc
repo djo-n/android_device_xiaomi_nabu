@@ -314,9 +314,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/uio1                 0660   system     system
 /dev/uio2                 0660   system     system
 
-#spi ir nodes
-/dev/ir_spi               0660   system     system
-
 # SSR devices
 /dev/subsys_*         0640   system     system
 
