@@ -34,9 +34,6 @@
 # Persist subsystem
 /mnt/vendor/persist/subsys(/.*)?                                                                    u:object_r:vendor_persist_subsys_file:s0
 
-# Sensors
-/dev/akm09970                                                                                       u:object_r:hall_device:s0
-
 # SSR
 /sys/devices(/platform)?/soc/[a-z0-9\.:]+,[a-z0-9\-\_]+/subsys[0-9]+/name                           u:object_r:vendor_sysfs_ssr:s0
 
