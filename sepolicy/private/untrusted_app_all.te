@@ -1,0 +1,2 @@
+# Termux reads the wireless debugging port to reach the root shell over localhost
+get_prop(untrusted_app_all, nabu_adb_tls_port_prop)
