@@ -1,0 +1,3 @@
+# adbd's own port property is internal to the platform; apps such as Termux read this copy
+on property:service.adb.tls.port=*
+    setprop nabu.adb.tls.port ${service.adb.tls.port}

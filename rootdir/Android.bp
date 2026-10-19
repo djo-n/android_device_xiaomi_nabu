@@ -113,6 +113,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.nabu.adb.rc",
+    src: "etc/init.nabu.adb.rc",
+    sub_dir: "init",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
     name: "ueventd.qcom.rc",
     filename: "ueventd.rc",
     src: "etc/ueventd.qcom.rc",
