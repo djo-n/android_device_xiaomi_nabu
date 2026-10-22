@@ -14,7 +14,6 @@
 <resources>
     <!-- Double tap to wake -->
     <string name="double_tap_2_wake_title">Double tap to wake</string>
-    <string name="double_tap_2_wake_summary">Wake device by double tapping the screen</string>
     <string name="double_tap_2_wake_switch_title">Enable double tap to wake</string>
     <string name="double_tap_2_wake_switch_summary">Allow waking device by double tapping the screen</string>
 
