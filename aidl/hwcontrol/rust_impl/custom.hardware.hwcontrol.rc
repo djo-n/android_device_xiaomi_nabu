@@ -15,4 +15,4 @@ on init
 service vendor.hw-aidl-rs /system/bin/custom.hardware.hwcontrol-service
     class hal
     user system
-    group system input uhid 
+    group system
