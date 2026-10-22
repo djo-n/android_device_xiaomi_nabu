@@ -328,9 +328,6 @@ vendor/etc/camera/seg_quantized.dlc
 vendor/etc/camera/sr_params.xml
 vendor/etc/camera/vidhance_calibration
 
-# Camera Megvii
-vendor/etc/camera/megviifacepp_0_5_2_model
-
 # Camera firmware
 vendor/firmware/CAMERA_ICP.elf
 
@@ -663,7 +660,6 @@ vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so
 
 # QMI
 vendor/bin/irsc_util
-vendor/etc/sec_config
 vendor/lib/libdiag.so
 vendor/lib64/libdiag.so
 vendor/lib64/libidl.so
