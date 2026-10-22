@@ -232,52 +232,6 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
 on property:vendor.dcvs.prop=1
    start dcvs-sh
 
-on property:vendor.audio.cit.spkcal.copy=true
-    copy /data/vendor/cit/tas2557_cal.bin /mnt/vendor/persist/audio/tas2557_cal.bin
-    copy /data/vendor/cit/tas2557_cal.txt /mnt/vendor/persist/audio/tas2557_cal.txt
-    copy /data/vendor/cit/tas2557_chk.txt /mnt/vendor/persist/audio/tas2557_chk.txt
-    chmod 666 /mnt/vendor/persist/audio/tas2557_cal.bin
-    chmod 666 /mnt/vendor/persist/audio/tas2557_cal.txt
-    chmod 666 /mnt/vendor/persist/audio/tas2557_chk.txt
-    copy /data/vendor/cit/cs35l41_cal.bin /mnt/vendor/persist/audio/cs35l41_cal.bin
-    copy /data/vendor/cit/cs35l41_cal.txt /mnt/vendor/persist/audio/cs35l41_cal.txt
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal.bin
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal.txt
-    copy /data/vendor/cit/tfa9894_chk.txt /mnt/vendor/persist/audio/tfa9894_chk.txt
-    chmod 666 /mnt/vendor/persist/audio/tfa9894_chk.txt
-    copy /data/vendor/cit/tas25xx_calib.bin /mnt/vendor/persist/audio/tas25xx_calib.bin
-    copy /data/vendor/cit/tas2559_cal.txt /mnt/vendor/persist/audio/tas2559_cal.txt
-    chmod 666 /mnt/vendor/persist/audio/tas25xx_calib.bin
-    chmod 666 /mnt/vendor/persist/audio/tas2559_cal.txt
-
-    chmod 666 /data/vendor/cit/cs35l41_cal_tr.bin
-    chmod 666 /data/vendor/cit/cs35l41_cal_tr.txt
-    chmod 666 /data/vendor/cit/cs35l41_cal_br.bin
-    chmod 666 /data/vendor/cit/cs35l41_cal_br.txt
-    chmod 666 /data/vendor/cit/cs35l41_cal_tl.bin
-    chmod 666 /data/vendor/cit/cs35l41_cal_tl.txt
-    chmod 666 /data/vendor/cit/cs35l41_cal_bl.bin
-    chmod 666 /data/vendor/cit/cs35l41_cal_bl.txt
-
-    copy /data/vendor/cit/cs35l41_cal_tr.bin /mnt/vendor/persist/audio/cs35l41_cal_tr.bin
-    copy /data/vendor/cit/cs35l41_cal_tr.txt /mnt/vendor/persist/audio/cs35l41_cal_tr.txt
-    copy /data/vendor/cit/cs35l41_cal_br.bin /mnt/vendor/persist/audio/cs35l41_cal_br.bin
-    copy /data/vendor/cit/cs35l41_cal_br.txt /mnt/vendor/persist/audio/cs35l41_cal_br.txt
-    copy /data/vendor/cit/cs35l41_cal_tl.bin /mnt/vendor/persist/audio/cs35l41_cal_tl.bin
-    copy /data/vendor/cit/cs35l41_cal_tl.txt /mnt/vendor/persist/audio/cs35l41_cal_tl.txt
-    copy /data/vendor/cit/cs35l41_cal_bl.bin /mnt/vendor/persist/audio/cs35l41_cal_bl.bin
-    copy /data/vendor/cit/cs35l41_cal_bl.txt /mnt/vendor/persist/audio/cs35l41_cal_bl.txt
-
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_tr.bin
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_tr.txt
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_br.bin
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_br.txt
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_tl.bin
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_tl.txt
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.bin
-    chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.txt
-
-
 # for gts test
 on property:persist.sys.miui_optimization=false
     write /dev/stune/top-app/schedtune.prefer_idle 1
