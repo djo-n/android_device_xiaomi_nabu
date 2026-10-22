@@ -10,6 +10,7 @@ prebuilt_etc {
     overrides: [
         "Backgrounds",
         "Camelot",
+        "DeviceAsWebcam",
         "EmergencyInfo",
         "Etar",
         "ExactCalculator",
