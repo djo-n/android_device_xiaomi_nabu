@@ -106,13 +106,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.xiaomi.rc",
-    src: "etc/init.xiaomi.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "init.nabu.adb.rc",
     src: "etc/init.nabu.adb.rc",
     sub_dir: "init",

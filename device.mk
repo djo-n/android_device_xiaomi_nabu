@@ -443,7 +443,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.target.rc \
-    init.xiaomi.rc \
     ueventd.qcom.rc
 
 # Thermal profile and display allocator

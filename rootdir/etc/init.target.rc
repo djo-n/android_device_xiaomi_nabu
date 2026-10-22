@@ -87,10 +87,6 @@ on post-fs-data
     chmod 0644 /dev/elliptic0
     chmod 0644 /dev/elliptic1
     mkdir /data/vendor/misc/display 0771 system system
-    chmod 666 /sys/class/drm/card0-DSI-1/disp_count
-    chown system system /sys/class/drm/card0-DSI-1/dim_alpha
-    chown system system /sys/class/drm/card0-DSI-1/fod_ui_ready
-    chown system system /sys/class/drm/card0-DSI-1/dim_layer_enable
 
     # Keep the daemon's runtime dumps group-writable for system so mi_thermald
     # (uid 0, gid system) never needs the neverallowed dac_override capability,
@@ -108,9 +104,6 @@ on post-fs-data
     chmod 0660 /dev/tfa_rpc
     chmod 0660 /dev/tfa_control
 
-    chmod 0666 /sys/module/migt/parameters/mi_viptask
-    restorecon /sys/module/migt/parameters/mi_viptask
-
 on early-boot
     start vendor.sensors
 
@@ -119,7 +112,6 @@ on early-boot
 on boot
     chown system system /sys/kernel/hbtp/display_pwr
     chown system system /sys/kernel/qvr_external_sensor/fd
-    chown system system /sys/class/drm/card0-DSI-1/doze_backlight
     write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/audio-app/cpus 1-2
     write /dev/cpuset/foreground/cpus 0-3
@@ -148,9 +140,6 @@ on boot
     chmod 0664 /sys/class/thermal/thermal_message/screen_state
     chmod 0664 /sys/class/thermal/thermal_message/temp_state
     chmod 0664 /sys/class/thermal/thermal_message/cpu_limits
-
-    chown system system /sys/class/drm/card0-DSI-1/disp_param
-    chmod 0664 /sys/class/drm/card0-DSI-1/disp_param
 
     chown system system /proc/tp_selftest
     chmod 0664 /proc/tp_selftest
@@ -288,28 +277,6 @@ on property:vendor.audio.cit.spkcal.copy=true
     chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.bin
     chmod 666 /mnt/vendor/persist/audio/cs35l41_cal_bl.txt
 
-
-on post-fs-data
-    chmod 0666 /dev/migt
-    restorecon /dev/migt
-    chmod 0777 /sys/module/migt/parameters/migt_freq
-    restorecon /sys/module/migt/parameters/migt_freq
-    chmod 0777 /sys/module/migt/parameters/migt_ms
-    restorecon /sys/module/migt/parameters/migt_ms
-    chmod 0777 /sys/module/migt/parameters/migt_thresh
-    restorecon /sys/module/migt/parameters/migt_thresh
-    chmod 0777 /sys/module/migt/parameters/boost_policy
-    restorecon /sys/module/migt/parameters/boost_policy
-    chmod 0777 /sys/module/migt/parameters/fps_variance_ratio
-    restorecon /sys/module/migt/parameters/fps_variance_ratio
-    chmod 0777 /sys/module/migt/parameters/super_task_max_num
-    restorecon /sys/module/migt/parameters/super_task_max_num
-    chmod 0777 /sys/module/migt/parameters/migt_ceiling_freq
-    restorecon /sys/module/migt/parameters/migt_ceiling_freq
-    chmod 0777 /sys/module/migt/parameters/stask_candidate_num
-    restorecon /sys/module/migt/parameters/stask_candidate_num
-    chmod 0777 /sys/module/migt/parameters/fas_power_mod
-    restorecon /sys/module/migt/parameters/fas_power_mod
 
 # for gts test
 on property:persist.sys.miui_optimization=false
