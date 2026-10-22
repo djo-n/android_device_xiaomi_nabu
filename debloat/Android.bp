@@ -19,6 +19,7 @@ prebuilt_etc {
         "Profiles",
         "QuickAccessWallet",
         "Recorder",
+        "SecureElement",
         "SimpleSettingsConfig",
         "Twelve",
     ],
