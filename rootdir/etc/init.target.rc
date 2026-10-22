@@ -231,12 +231,3 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
 
 on property:vendor.dcvs.prop=1
    start dcvs-sh
-
-# for gts test
-on property:persist.sys.miui_optimization=false
-    write /dev/stune/top-app/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 100
-
-on property:persist.sys.miui_optimization=true
-    write /dev/stune/top-app/schedtune.prefer_idle 0
-    write /dev/stune/top-app/schedtune.boost 0
