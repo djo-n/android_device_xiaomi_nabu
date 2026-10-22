@@ -284,8 +284,6 @@ on post-fs-data
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
-    mkdir /data/vendor/secure_element 0777 system system
-
     #Create SWAP related dirs
     mkdir /data/vendor/swap 0770 root system
     chmod 2770 /data/vendor/swap
